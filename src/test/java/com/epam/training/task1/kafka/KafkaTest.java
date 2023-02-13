@@ -43,8 +43,7 @@ public class KafkaTest {
     }
 
     @Test
-    public void testReceiving()
-            throws Exception {
+    public void testReceiving() {
         producer.send("key", "payload");
         Awaitility.await().atMost(Duration.ofSeconds(10)).until(() -> !consumer.getReceivedMessages().isEmpty());
         Assertions.assertEquals("payload", consumer.getReceivedMessages().get("key"));
